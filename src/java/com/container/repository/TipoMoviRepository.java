@@ -73,4 +73,15 @@ public class TipoMoviRepository {
         this.transaction.commit();
         this.session.close();
     }
+   
+   public List<TipoMovi> buscar(){
+        this.session = HibernateConector.getSessionFactory().openSession();
+        this.transaction = session.beginTransaction();
+        
+        List<TipoMovi> listaDeTiposMovi = this.session.createQuery("from TipoMovi").list();
+        
+        this.transaction.commit();
+        this.session.close();
+        return listaDeTiposMovi;
+    }
 }
