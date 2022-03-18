@@ -19,14 +19,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tipoMovi")
 public class tipoMovi implements Serializable {
-    
-    
-@Id
-@GeneratedValue
+    @Id
+    @GeneratedValue
     private long idTipoMovi;
-
-
-@Column(nullable = false, length = 80)
+    
+    @Column(nullable = false, length = 80, name = "nome")
     private String tipoMovi;
 
     public long getIdTipoMovi() {
@@ -44,6 +41,5 @@ public class tipoMovi implements Serializable {
     public void setTipoMovi(String tipoMovi) {
         this.tipoMovi = tipoMovi;
     }
-    
     
 }

@@ -69,7 +69,9 @@ public class ContainerRepository {
    public void  remover(long idContainer){
         this.session = HibernateConector.getSessionFactory().openSession();
         this.transaction = session.beginTransaction();
-
+        
+        ContainerModel container =(ContainerModel) this.session.get(ContainerModel.class, idContainer);
+        this.session.delete(container);
         this.transaction.commit();
         this.session.close();
     }

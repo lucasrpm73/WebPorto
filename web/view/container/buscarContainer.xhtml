@@ -27,21 +27,26 @@
                     <tbody>
                         <ui:repeat value="#{containerController.listaDeContainer}" var="container">
                             <tr>
+                                <td>#</td>
                                 <td>#{container.pessoaNome}</td>
                                 <td>#{container.containerNumero}</td>
                                 <td>#{container.containerTipo}</td>
                                 <td>#{container.containerStatus}</td>
                                 <td>#{container.containerCategoria}</td>
-                                <td>#</td>
+                                
 
-
+                                <td>
                                 <h:form>
                                     <h:commandButton class="btn btn-secondary" value="Alterar" onclick="ruturn confirm('Deseja realmente alterar o registro?')" action="#{containerController.editar(container.idPessoa)}"/>
                                 </h:form>
+                                    </td>
+                                
+                                <td>
                                 <h:form>
                                     <h:commandButton class="btn btn-danger" value="Excluir" onclick="ruturn confirm('Deseja realmente excluir o registro?')" action="#{containerController.remover(container.idPessoa)}"/>
                                 </h:form>
-                            </tr>
+                                    </td>
+                            </tr>/
                         </ui:repeat>    
                     </tbody>
                 </table>

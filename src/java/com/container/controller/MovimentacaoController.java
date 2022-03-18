@@ -7,10 +7,10 @@ package com.container.controller;
 
 import com.container.model.MovimentacaoModel;
 import com.container.model.PessoaModel;
-import com.container.model.TipoMovi;
+import com.container.model.tipoMovi;
 import com.container.repository.MovimentacaoRepository;
 import com.container.repository.PessoaRepository;
-import com.container.repository.TipoMoviRepository;
+import com.container.repository.tipoMoviRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -30,7 +30,7 @@ public class MovimentacaoController {
     
     private MovimentacaoModel movimentacaoModel;
     private MovimentacaoRepository movimentacaoRepository;
-    private TipoMoviRepository tipoMoviRepository;
+    private tipoMoviRepository tipoMoviRepository;
     private PessoaRepository pessoaRepository;
     private PessoaModel pessoaModel;
     private String pessoa;
@@ -39,7 +39,7 @@ public class MovimentacaoController {
     public MovimentacaoController() {
         this.movimentacaoModel = new MovimentacaoModel();
         this.movimentacaoRepository = new MovimentacaoRepository();
-        this.tipoMoviRepository = new TipoMoviRepository();
+        this.tipoMoviRepository = new tipoMoviRepository();
         this.pessoaRepository = new PessoaRepository();
         this.listaDeMovimentacao = new ArrayList<>();
     }
@@ -73,8 +73,8 @@ public class MovimentacaoController {
     
      public List<SelectItem> getTiposMovis() {
         ArrayList<SelectItem> itens = new ArrayList<SelectItem>();
-        List<TipoMovi> listaDeTipo = this.tipoMoviRepository.buscar();
-        for (TipoMovi tipo : listaDeTipo) {
+        List<tipoMovi> listaDeTipo = this.tipoMoviRepository.buscar();
+        for (tipoMovi tipo : listaDeTipo) {
             itens.add(new SelectItem(tipo.getTipoMovi(), tipo.getTipoMovi()));
         }
         return itens;
