@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="corpo">
+        <div class="container">
+            <h1>Buscar Movimentação</h1>
+            <hr/>
+            <div class="field">
+                <table data-page-length='5' class="table table-bordered table-striped"  onload="#{movimentacaoController.buscarTodosMovimentacoes()}">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tipo De Movimentação</th>
+                            <th scope="col">Data e Hora inicio</th>
+                            <th scope="col">Data e Hora fim</th>
+                            <th scope="col">Cliente</th>
+                            
+                        </tr>   
+                    </thead>
+                    <tbody> 
+                        <ui:repeat value="#{movimentacaoController.listaDeMovimentacao}" var="movimentacao">
+                            <tr>
+                                <td> # </td>
+                                <td>#{movimentacao.movimentacaoTipo}</td>
+                                <td>#{movimentacao.dataHoraInicio}</td>
+                                <td>#{movimentacao.dataHoraFim}</td>
+                                <td>#{movimentacao.pessoa}</td>
+                                <td>
+                                    
+                                    <h:form>
+                                        <h:commandButton class="btn btn-secondary" value="Alterar" onclick="return confirm('Deseja realmente alterar o registro?')" action= "#{movimentacaoController.editar(movimentacao.idMovimentacao)}"/>
+                                    </h:form>
+                                </td>
+                                <td>
+                                    <h:form>
+                                        <h:commandButton class="btn btn-danger" value="Excluir" onclick="return confirm('Deseja realmente excluir o registro?')" action= "#{movimentacaoController.remover(movimentacao.idMovimentacao)}"/>
+                                    </h:form>
+                                    
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

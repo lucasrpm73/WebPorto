@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                    
+    <ui:define name="corpo">
+        <div class="container">
+            
+            <h1>Cadastrar Movimenação</h1>
+            <h:form class="novo">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="nomeCliente">Tipo de Movimentação</label>
+                        <h:selectOneMenu class="form-control" id="TipoMovimentacao" value="#{movimentacaoController.movimentacaoModel.movimentacaoTipo}">
+                            <f:selectItems value="#{movimentacaoController.tiposMovis}"/>
+                        </h:selectOneMenu>    
+                    </div>
+               
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nomePessoa">Cliente</label>
+                            <h:selectOneMenu class="form-control" id="idPessoa" value="#{movimentacaoController.movimentacaoModel.pessoa}">
+                            <f:selectItems value="#{movimentacaoController.pessoas}"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="dataInicio">Data e Hora inicio</label>
+                        <h:inputText class="form-control" id="idDataInicio" value="#{movimentacaoController.movimentacaoModel.dataHoraInicio}" converterMessage="Por favor, forneça a data e hora no formato dd/mm/aaa hh:mm">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-03:00"/>
+                        </h:inputText>
+                    </div> 
+                    
+                    <div class="form-group col-md-3">
+                        <label for="dataFim">Data e Hora fim</label>
+                        <h:inputText class="form-control" id="idDataFim" value="#{movimentacaoController.movimentacaoModel.dataHoraFim}" converterMessage="Por favor, forneça a data e hora no formato dd/mm/aaa hh:mm">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-03:00"/>
+                        </h:inputText>
+                    </div>   
+                </div>
+                <h:commandButton class="btn btn-primary" value="SALVAR" action="#{movimentacaoController.salvar()}"/>
+            </h:form>    
+        </div>  
+    </ui:define>
+</ui:composition>

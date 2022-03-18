@@ -48,7 +48,7 @@ public class MovimentacaoController {
     
     public String salvar(){
     this.movimentacaoRepository.salvar(this.movimentacaoModel);
-    return "/view/container/buscarContainer.xhtml";
+    return "/view/movimentacao/buscarMovimentacao.xhtml";
     }
     
     public String salvarEdicao(){
@@ -61,7 +61,7 @@ public class MovimentacaoController {
     }
     
     public String editar(long idMovimentacao){
-    return "editarMovimentacao.xhtml?faces-redirect=true&idMovimentacaor=" + idMovimentacao;
+    return "editarMovimentacao.xhtml?faces-redirect=true&idMovimentacao=" + idMovimentacao;
     }
     public void buscarMovimentacao() {
         this.movimentacaoModel = this.movimentacaoRepository.buscarPorId(this.movimentacaoModel.getIdMovimentacao());
@@ -69,7 +69,15 @@ public class MovimentacaoController {
     public void getMovimentacao() {
         this.movimentacaoModel = this.movimentacaoRepository.buscarPorId(this.movimentacaoModel.getIdMovimentacao());
     }
-
+    
+    public void buscarsumarioEx(){
+        this.listaDeMovimentacao = this.movimentacaoRepository.buscarSumarioEx();
+    }
+    
+    public void buscarsumarioImport(){
+        this.listaDeMovimentacao = this.movimentacaoRepository.buscarSumarioImport();
+    
+    }
     
      public List<SelectItem> getTiposMovis() {
         ArrayList<SelectItem> itens = new ArrayList<SelectItem>();

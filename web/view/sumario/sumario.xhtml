@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="corpo">
+        <div class="container table-active">
+            <h1>Quantidade Exportação/Impotação</h1> 
+            <h:form class="novo">
+             <!--   
+            <label for="nomeCliente">Nome do Cliente</label>
+            <h:inputText class="form-control" id="clienteNome" />
+            <h:commandButton class="btn btn-primary" value="Pesquisar" action="#{movimentacaoController.movimentacaoRepository.buscarTodos()}"/>
+            --> 
+            
+            <hr/>       
+           <hr/>
+            <div class="field">
+                <tbody> 
+                    <table data-page-length='5' class="table table-bordered table-striped"  onload="#{movimentacaoController.buscarsumarioEx()}">
+                        <thead>
+                            <tr>
+                                <th scope="col">Exportação</th>
+                               
+                            </tr>   
+                        </thead>
+
+                            <ui:repeat value="#{movimentacaoController.listaDeMovimentacao}" var="movimentacao">
+                                <tr>
+                                    <td>#{movimentacao}</td>
+                                    
+                                </tr>
+                            </ui:repeat>
+
+                    </table>
+                    <table data-page-length='5' class="table table-bordered table-striped"  onload="#{movimentacaoController.buscarsumarioImport()}">
+                        <thead>
+                            <tr>
+                                <th scope="col">Importação</th>
+                            </tr>   
+                        </thead>
+
+                            <ui:repeat value="#{movimentacaoController.listaDeMovimentacao}" var="movimentacao">
+                                <tr>
+                                    <td>#{movimentacao}</td>
+                                </tr>
+                            </ui:repeat>
+
+                    </table>
+                    </tbody>
+            </div>
+          </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

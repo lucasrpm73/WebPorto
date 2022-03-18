@@ -49,6 +49,6 @@ Contributor(s):
     <mapping class="com.container.model.tipoMovi"/>
     <mapping class="com.container.model.PessoaModel"/>
     <mapping class="com.container.model.MovimentacaoModel"/>
-    <mapping class="com.container.model.ContainerModel"/>
+    <mapping class="com.container.model.ContainerModel" file="" jar="" package="" resource=""/>
   </session-factory>
 </hibernate-configuration>

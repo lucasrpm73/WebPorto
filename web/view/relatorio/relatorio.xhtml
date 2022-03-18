@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                    
+    <ui:define name="corpo">
+        <div class="container">
+            
+            <h1>Relatório</h1>
+            <h:form class="novo">
+                <label for="nomeCliente">Nome do Cliente</label>
+                <div class="fild">
+                    <table class="table table-bordered table-striped" onload="#{movimentacaoController.buscarPorCliente()}">
+                        <thead>
+                            <tr>
+                                <th scope="col" >#</th>
+                                <th scope="col" >Cliente</th>
+                                <th scope="col" >Tipo de Movimentação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{movimentacaoController.listaDeMovimentacao}" var="movimentacao">
+                                <tr>
+                                    <td>#</td>
+                                    <td>#{movimentacao.pessoa}</td>
+                                    <td>#{movimentacao.movimentacaoTipo}</td>
+                                </tr>
+                            </ui:repeat>   
+                        </tbody>
+                    </table>
+                </div>
+            </h:form>    
+        </div>  
+    </ui:define>
+</ui:composition>

@@ -5,7 +5,6 @@
  */
 package com.container.repository;
 
-import com.container.model.ContainerModel;
 import com.container.model.MovimentacaoModel;
 import com.container.util.HibernateConector;
 import java.util.List;
@@ -70,11 +69,13 @@ public class MovimentacaoRepository {
    public void  remover(long idMovimentacao){
         this.session = HibernateConector.getSessionFactory().openSession();
         this.transaction = session.beginTransaction();
-
+        
+        MovimentacaoModel movimentacao =(MovimentacaoModel) this.session.get(MovimentacaoModel.class, idMovimentacao);
+        this.session.delete(movimentacao);
+        
         this.transaction.commit();
         this.session.close();
     }
-   
    
    public List<MovimentacaoModel> buscarOrdenarCliente(){
        this.session = HibernateConector.getSessionFactory().openSession();
@@ -104,6 +105,32 @@ public class MovimentacaoRepository {
    
    
    }
+
+    public List<MovimentacaoModel> buscarSumarioEx() {
+        this.session = HibernateConector.getSessionFactory().openSession();
+        this.transaction = session.beginTransaction();
+        
+        List<MovimentacaoModel> listaSumario;
+        listaSumario = this.session.createQuery("SELECT count(containercategoria)as Total_Registros FROM ContainerModel WHERE containercategoria='Exportação'").list();
+        
+        this.transaction.commit();
+        this.session.close();
+        
+        return listaSumario;
+    }
+
+    public List<MovimentacaoModel> buscarSumarioImport() {
+        this.session = HibernateConector.getSessionFactory().openSession();
+        this.transaction = session.beginTransaction();
+        
+        List<MovimentacaoModel> listaSumario;
+        listaSumario = this.session.createQuery("SELECT count(containercategoria)as Total_Registros FROM ContainerModel WHERE containercategoria='Importação'").list();
+        
+        this.transaction.commit();
+        this.session.close();
+        
+        return listaSumario;
+    }
    
    
     
