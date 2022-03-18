@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                    
+    <ui:define name="corpo">
+        <div class="container">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="nomeCliente">Nome do Cliente</label>
+                    <h:inputText class="form-control" id="clienteNome" value="#{containerController.containerModel.pessoaNome}"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="numeroContainer">Número do Container</label>
+                    <h:inputText class="form-control" id="NumeroContainer" value="#{containerController.containerModel.containerNumero}"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="tipoContainer">Tipo</label>
+                    <h:selectOneRadio class="btn-outline-info col-md-3" id="TipoContainer" value="#{containerController.containerModel.containerTipo}">
+                    <f:selectItem itemValue="20" itemLabel="20"/>
+                    <f:selectItem itemValue="40" itemLabel="40"/>
+                    </h:selectOneRadio>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="statusContainer">Status</label>
+                    <h:selectOneMenu class="form-control" id="StatusContainer" value="#{containerController.containerModel.containerStatus}">
+                        <f:selectItem itemValue="Selecionar" itemLabel="Selecionar"/>
+                        <f:selectItem itemValue="Cheio" itemLabel="Cheio"/>
+                        <f:selectItem itemValue="Vazio" itemLabel="Vazio"/>
+                    </h:selectOneMenu>
+                </div> <div class="form-group col-md-3">
+                    <label for="statusContainer">Categoria</label>
+                    <h:selectOneMenu class="form-control" id="CategoriaContainer" value="#{containerController.containerModel.containerCategoria}">
+                        <f:selectItem itemValue="Selecionar" itemLabel="Selecionar"/>
+                        <f:selectItem itemValue="Importação" itemLabel="Importação"/>
+                        <f:selectItem itemValue="Exportação" itemLabel="Exportação"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+            <h:commandButton class="btn btn-primary" value="SALVAR" action="#{containerController.salvar()}"
+            
+        </div>  
+    </ui:define>
+</ui:composition>

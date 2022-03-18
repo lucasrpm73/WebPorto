@@ -94,16 +94,16 @@ public class MovimentacaoController {
           
 
      
-    public List<SelectItem> getMovimentacoes() {
+    public List<SelectItem> getMovimentacoes() throws RollbackException, HeuristicMixedException {
         ArrayList<SelectItem> itens = new ArrayList<SelectItem>();
-        List<movimentacaoModel> listaDeMovimentacoes = this.movimentacaoRepository.buscarTodos();
-        for (movimentacaoModel movimentacao : listaDeMovimentacoes) {
+        List<MovimentacaoModel> listaDeMovimentacoes = this.movimentacaoRepository.buscarTodos();
+        for (MovimentacaoModel movimentacao : listaDeMovimentacoes) {
             itens.add(new SelectItem(movimentacao.getIdMovimentacao(), movimentacao.getMovimentacaoTipo()));
         }
         return itens;
     }
     
-    public void buscarTodosMovimentacoes() {
+    public void buscarTodosMovimentacoes() throws RollbackException, HeuristicMixedException {
         this.listaDeMovimentacao = this.movimentacaoRepository.buscarTodos();
         
     }
@@ -112,27 +112,27 @@ public class MovimentacaoController {
         
     }
 
-    public movimentacaoModel getMovimentacaoModel() {
+    public MovimentacaoModel getMovimentacaoModel() {
         return movimentacaoModel;
     }
 
-    public void setMovimentacaoModel(movimentacaoModel movimentacaoModel) {
+    public void setMovimentacaoModel(MovimentacaoModel movimentacaoModel) {
         this.movimentacaoModel = movimentacaoModel;
     }
 
-    public movimentacaoRepository getMovimentacaoRepository() {
+    public MovimentacaoRepository getMovimentacaoRepository() {
         return movimentacaoRepository;
     }
 
-    public void setMovimentacaoRepository(movimentacaoRepository movimentacaoRepository) {
+    public void setMovimentacaoRepository(MovimentacaoRepository movimentacaoRepository) {
         this.movimentacaoRepository = movimentacaoRepository;
     }
 
-    public List<movimentacaoModel> getListaDeMovimentacao() {
+    public List<MovimentacaoModel> getListaDeMovimentacao() {
         return listaDeMovimentacao;
     }
 
-    public void setListaDeMovimentacao(List<movimentacaoModel> listaDeMovimentacao) {
+    public void setListaDeMovimentacao(List<MovimentacaoModel> listaDeMovimentacao) {
         this.listaDeMovimentacao = listaDeMovimentacao;
     }
 }
